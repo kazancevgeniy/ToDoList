@@ -1,10 +1,7 @@
 <template>
 	<div>
-		<h1>{{this.getFullName}}</h1>
 		<div v-for="todo in todos" :key="todo.id">
-			<h3>
-				<TodoItem />
-			</h3>
+			<TodoItem :todo="todo" @delItem="$emit('delItem', todo.id)"/>
 		</div>
 	</div>
 </template>
@@ -21,21 +18,11 @@ import TodoItem from './TodoItem';
 				type: Array
 			}
 		},
-		data() {
-			return {
-				person : {
-					name: 'Evgeniy',
-					secondName: 'Kazancev',
-					birdth: 1990,
-					marryed: false
-				}
-			}
-		},
-		computed: {
-			getFullName() {
-				return `${this.person.name + ' ' + this.person.secondName}`
-			}
-		}
+		methods: {
+			// delTodo() {
+   //          	this.$emit('delTodo', this.todo.id);
+   //      	}
+        }
 	}
 </script>
 
